@@ -1,0 +1,77 @@
+/* Marion County News Aggregator 
+   (C) 2010 Ravsonic Studios
+   <3 Lee Adkins
+*/
+
+body {
+	margin: 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
+}
+.beta {
+	color: #880000;
+}
+#wrapper {
+	width: 960px;
+	margin: auto;
+	
+}
+
+.column {
+	float: left;
+}
+
+.source {
+	width: 310px;
+	padding-left: 5px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+
+}
+
+.source p {
+	color: #444;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 2px;
+	margin: 0;
+	font-size: .8em;
+}
+
+.source-content h3 {
+	color: #220000;
+	font-size: .8em;
+}
+
+.source a {
+	color: #006600;
+}
+
+.source a:visited {
+	color: #444;
+}
+
+.source h3 a{
+	color: #660000;
+	text-decoration: none;
+}
+
+.source h3 a:hover{
+	text-decoration: underline;
+}
+
+.source h2 a {
+	color: #333;
+	text-decoration: none;
+}
+.source h2 a:hover {
+	color: #000066;
+	text-decoration: underline;
+}
+
+
+#footer {
+	padding: 25px;
+	font-size: .7em;
+	text-align: center;
+	clear: both;
+}

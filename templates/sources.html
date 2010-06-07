@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title>MCNews Sources</title>
+</head>
+<body>
+	{% for source in sources %}
+		<p>{{ source.name }} - <em>{{ source.path }} - Updated: {{ source.modified }}</em> - <a href="/sources/{{ source.key }}/delete">Delete</a></p>
+	{% endfor %}
+	<form action="/sources" method="post">
+		<p>
+			<label for="source_title">Source Title:</label>
+			<input type="text" id="source_title" name="source_title"/>
+		</p>
+		<p>
+			<label for="source_url">Source Feed URL: </label>
+			<input type="text" id="source_url" name="source_url"/>
+		</p>
+		<p>
+			<input type="submit" id="send" name="send" value="Add Source"/>
+		</p>
+	</form>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:og="http://opengraphprotocol.org/schema/"
+      xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+	<title>Marion County Updates</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta property="fb:admins" content="56701960"/>
+	<meta property="og:title" content="Marion County Updates"/>
+	<meta property="og:site_name" content="Marion County Updates"/>
+	<meta property="og:image" content="http://mc.ravsonic.com/images/logo.png"/>
+	<meta property="og:url" content="http://mc.ravsonic.com"/>
+	<meta property="og:type" content="website"/>
+	<link rel="stylesheet" href="/css/mc.css" type="text/css" media="screen" title="MCNews" charset="utf-8">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function(){
+			//Let's get it going
+	/*		$(".column").sortable({
+				connectWith: '.column'
+			});
+	*/		
+			$(".source").addClass("ui-widget ui-widget-content ui-helper-clearfix ui-corner-all")
+						.find(".source-header")
+							.addClass("ui-widget-header ui-corner-all")
+							.prepend('<span class="ui-icon ui-icon-minusthick"></span>')
+							.end()
+						.find(".source-content");
+
+					$(".source-header .ui-icon").click(function() {
+						$(this).toggleClass("ui-icon-minusthick").toggleClass("ui-icon-plusthick");
+						$(this).parents(".source:first").find(".source-content").toggle();
+					});
+					
+
+					$(".column").disableSelection();
+					
+			$(".source-content").accordion({
+				autoHeight: false
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<h1>
+			Marion County Updates <span class="beta">Beta</span>
+		</h1>
+		<div>
+						<iframe src="http://www.facebook.com/plugins/like.php?href=http%253A%252F%252Fmc.ravsonic.com&amp;layout=standard&amp;show_faces=false&amp;width=450&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:35px;" allowTransparency="true"></iframe>
+		</div>
+		<div class="column">
+		{% for source in c %}
+			<div class="source">
+				<h2 class="source-header"><a href="{{ source.link }}"> {{ source.name }}</a></h2>
+				<div class="source-content">
+				{% for item in source.item_set %}
+					<h3><a href=""> {{ item.title }}</a></h3>
+					<div>
+						<p>
+							{{ item.excerpt }}
+						</p>
+						<p>
+						<a href="{{ item.path }}">Read the rest at {{ source.name }}</a>
+						</p>
+					</div>
+				{% endfor %}
+				</div>
+			</div>
+		{% endfor %}
+		</div>
+		<div class="column">
+		{% for source in b %}
+			<div class="source">
+				<h2 class="source-header"><a href="{{ source.link }}"> {{ source.name }}</a></h2>
+				<div class="source-content">
+				{% for item in source.item_set %}
+					<h3><a href=""> {{ item.title }}</a></h3>
+					<div>
+						<p>
+							{{ item.excerpt }}
+						</p>
+						<p>
+						<a href="{{ item.path }}">Read the rest at {{ source.name }}</a>
+						</p>
+					</div>
+				{% endfor %}
+				</div>
+			</div>
+		{% endfor %}
+		</div>
+		<div class="column">
+		{% for source in a %}
+			<div class="source">
+				<h2 class="source-header"><a href="{{ source.link }}"> {{ source.name }}</a></h2>
+				<div class="source-content">
+				{% for item in source.item_set %}
+					<h3><a href=""> {{ item.title }}</a></h3>
+					<div>
+						<p>
+							{{ item.excerpt }}
+						</p>
+						<p>
+						<a href="{{ item.path }}">Read the rest at {{ source.name }}</a>
+						</p>
+					</div>
+				{% endfor %}
+				</div>
+			</div>
+		{% endfor %}
+		</div>
+		<div id="footer">
+			<p>
+				Made with love and provided to you free of charge by Lee Adkins and Ravsonic Studios. Represent.
+			</p>
+			<p>
+				The rights and ownership to all content is retained by said owners. For more information or permission to republish something you read on one of the linked sites, contact the content owners directly.
+			</p>
+			<p>
+				If your content is displayed here, we've decided it's useful to Marion County's citizens. To read the full story, they must click over to your site - providing you more traffic.  If, for some reason, you'd rather visitors NOT be able to get to your site from here and want me to remove you, email me at help@ravsonic.com. Please also email if you'd prefer we use an alternate RSS feed.
+			</p>
+			{% if url %}
+			<p>
+			<a href="{{ url }}">Logout</a>
+			</p>
+			{% endif %}
+		</div>
+	</div>
+</body>
+</html>

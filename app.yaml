@@ -1,0 +1,30 @@
+application: marionupdates
+version: 2
+runtime: python
+api_version: 1
+
+handlers:
+- url: /css
+  static_dir: css
+
+- url: /images
+  static_dir: images
+
+- url: /sources
+  script: main.py
+  login: admin
+  
+- url: /sources/(.*)/delete
+  script: main.py
+  login: admin
+  
+- url: /sources/refresh
+  script: main.py
+  login: admin
+  
+- url: /refresh
+  script: main.py
+  login: admin
+
+- url: .*
+  script: main.py

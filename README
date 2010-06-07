@@ -1,0 +1,24 @@
+Aggro
+A simple feed aggregator built for App Engine
+---------------------------------------------
+Aggro is a simple project built for a simple purpose.
+
+I wanted an easy, simple homepage where I (and other like me) could go to view the latest headlines from local news sources.
+
+I didn't want to have to use Google Reader or an iGoogle start page. I didn't want other to have to either.
+
+Enter Aggro. It's an App Engine app that you can easily install to your own App Engine instance.  Simply add a few sources to it and it will automatically fetch them, display them in an easy to read way for your visitors, and update them automatically.
+
+It's still under development, but works fine as it is. You can see it running at http://mc.ravsonic.com.
+The source administration page isn't pretty yet, but I'm working on it.
+
+Installation
+_______________
+First, change the app ID in the app.yaml file to an application you've created on App Engine.
+Next, change the meta information in the <head> section of the Index.html template to your own information. If you don't want a facebook like button, remove these fields and remove the facebook Like button iframe. Failure to do one or the other will mean anyone who "likes" your instance will instead "like" mine. I'll clean this up for you once I'm done, but since I'm still working heavily on it, you're on your own with this one for now.
+
+Adding Sources
+________________
+Go to <your url>/sources, login with your Google Account, and modify the sources. You're currently limited to what you can do. You can add them. You can delete them. That's it. Editing, reordering, and refresh options coming soon.
+
+Any questions or comments? Message me here on Github or at lee at ravsonic dot com.
