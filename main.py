@@ -2,6 +2,7 @@
 # Ravsonic News Aggregator - App Engine Edition
 # Word. Only took a couple of hours
 import os
+from django.utils import simplejson
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util, template
 from google.appengine.api import urlfetch, users
@@ -69,9 +70,15 @@ class RefreshCron(webapp.RequestHandler):
 		for source in sources:
 			taskqueue.add(url="/sources/refresh", params={'key':source.key()})
 
+class APIHandler(webapp.RequestHandler):
+	def get(self):
+		sources = Source.all()
+		items = Item.all()
+		json = simplejson.dumps({"sources" : [s.to_dict() for s in sources], "items" : [i.to_dict() for i in items]})
+		self.response.out.write(json)
 
 def main():
-  application = webapp.WSGIApplication([('/', MainHandler), ('/sources', SourceHandler), (r'/sources/(.*)/delete', DeleteSourceHandler), ('/sources/refresh', RefreshSourceWorker), ('/refresh', RefreshCron)],
+  application = webapp.WSGIApplication([('/', MainHandler), ('/sources', SourceHandler), (r'/sources/(.*)/delete', DeleteSourceHandler), ('/sources/refresh', RefreshSourceWorker), ('/refresh', RefreshCron), ('/api', APIHandler)],
                                          debug=True)
   util.run_wsgi_app(application)
 
