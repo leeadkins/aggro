@@ -54,7 +54,7 @@
 			<div class="source">
 				<h2 class="source-header"><a href="{{ source.link }}"> {{ source.name }}</a></h2>
 				<div class="source-content">
-				{% for item in source.item_set %}
+				{% for item in source.sorted_item_set %}
 					<h3><a href=""> {{ item.title }}</a></h3>
 					<div>
 						<p>

@@ -18,7 +18,7 @@ def split_list(alist, wanted_parts=1):
 
 class MainHandler(webapp.RequestHandler):
 	def get(self):
-		s = Source.all().fetch(limit=100)
+		s = Source.all().order("modified").fetch(limit=100)
 		
 		user = users.get_current_user()
 		if user:

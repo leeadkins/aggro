@@ -25,6 +25,7 @@ class RefreshSourceWorker(webapp.RequestHandler):
 							i.excerpt = item.description
 						else: 
 							i.excerpt = item.title
+#						i.published = item.updated_parsed
 						i.put()
 			except:
 				print "error"

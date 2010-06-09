@@ -8,7 +8,12 @@ class Source(db.Model):
 	path = db.StringProperty()
 	modified = db.DateTimeProperty(auto_now=True)
 	
+	def sorted_item_set(self):
+		return self.item_set.order("modified")
+
 class Item(db.Model):
+	modified = db.DateTimeProperty(auto_now=True)
+	published = db.DateTimeProperty()
 	source = db.ReferenceProperty(Source)
 	title = db.StringProperty()
 	excerpt = db.TextProperty()
