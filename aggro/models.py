@@ -9,7 +9,7 @@ class Source(db.Model):
 	modified = db.DateTimeProperty(auto_now=True)
 	
 	def sorted_item_set(self):
-		return self.item_set.order("modified")
+		return self.item_set.order("modified").fetch(10)
 
 class Item(db.Model):
 	modified = db.DateTimeProperty(auto_now=True)
